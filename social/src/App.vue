@@ -1,10 +1,12 @@
 <template>
   <div>
-    首页
+    <TheIcon icon="home" />
   </div>
 </template>
 
 <script setup>
+import "./assets/base.css";
+import TheIcon from "./components/TheIcon.vue";
 </script>
 
 <style scoped>
