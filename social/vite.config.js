@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [vue()],
   server: {
     host: '0.0.0.0', // ip地址
-    port: 3000, // 端口号
+    port: 8000, // 端口号
     open: true // 是否自动打开浏览器
   }
 })
