@@ -1,7 +1,6 @@
 <template>
-  <div>
-    <TheIcon icon="home" />
-  </div>
+  <!-- <TheIcon icon="search" /> -->
+  <router-view></router-view>
 </template>
 
 <script setup>
