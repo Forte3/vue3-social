@@ -3,11 +3,11 @@
     <div class="postUpload">
       <label class="upload">
         <TheIcon icon="upload-image" />
-        <input type="text" accept="image/*" class="fileChooser" />
+        <input type="file" accept="image/*" class="fileChooser" />
       </label>
       <div class="postContent">
-        <textare placeholder="写点什么吧" class="postContentInput"></textare>
-        <button class="pubBtn button">发布</button>
+        <textarea placeholder="写点什么吧" class="postContentInput"></textarea>
+        <TheButton class="pubBtn">发布</TheButton>
       </div>
     </div>
   </TheModal>
@@ -16,6 +16,7 @@
 <script setup>
 import TheModal from './TheModal.vue';
 import TheIcon from './TheIcon.vue';
+import TheButton from './TheButton.vue';
 
 </script>
 
