@@ -10,6 +10,9 @@
   <template v-else>
     <router-view></router-view>
   </template>
+  <footer class="footer" :class="{inside: this.$route.name === 'login'}">
+    &copy; XXX. All Right Reserved.
+  </footer>
 </template>
 
 <script setup>

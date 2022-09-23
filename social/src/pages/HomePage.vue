@@ -4,7 +4,7 @@
       <PostItem v-for="n in 10" />
     </PostList>
     <!-- <PostDetails /> -->
-    <PostUpload />
+    <!-- <PostUpload /> -->
   </div>
 </template>
 

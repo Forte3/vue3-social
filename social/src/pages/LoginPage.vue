@@ -6,14 +6,21 @@
       <form>
         <input type="email" placeholder="邮箱" />
         <input type="password" placeholder="密码" />
-        <button type="submit" class="loginButton">登录</button>
-        <p class="info">"还没有账号？点击注册"</p>
+        <button type="submit" class="loginButton">{{ isLogin ? "登录":"注册" }}</button>
+        <p @click="isLogin = !isLogin" class="info">
+          {{isLogin ? "还没有账号？点击注册" : "已有账号？点击登录"}}
+        </p>
+        <div v-if="!isLogin" class="agreement">
+          <input type="checkbox" />勾选表示同意隐私协议和使用规范
+        </div>
       </form>
     </div>
   </div>
 </template>
 
 <script setup>
+import { ref } from 'vue';
+const isLogin = ref(true);
 
 </script>
 
@@ -69,9 +76,7 @@ input::placeholder {
 }
 
 .loginButton {
-  background: linear-gradient(89.93deg,
-      #00c2ff 0.06%,
-      #0047ff 105.68%);
+  background: linear-gradient(89.93deg, #00c2ff 0.06%, #0047ff 105.68%);
   padding: 12px 0;
   color: white;
   border: none;
