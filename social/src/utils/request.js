@@ -1,6 +1,9 @@
-import getJwtToken from '../apis/auth';
+import { getJwtToken } from "../apis/auth";
 
-export async function request(url, { method = 'GET', body, headers, auth = true } = {}) {
+export async function request(
+  url,
+  { method = "GET", body, headers, auth = true } = {}
+) {
   const res = await fetch(url, {
     method,
     headers: {

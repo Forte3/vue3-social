@@ -5,10 +5,12 @@ import vue from '@vitejs/plugin-vue'
 export default defineConfig({
   plugins: [vue()],
   server: {
-    host: '0.0.0.0', // ip地址
-    port: 8000, // 端口号
+    // host: '0.0.0.0', // ip地址
+    // port: 3000, // 端口号
     open: true, // 是否自动打开浏览器
-    "/api": "http://localhost:1337",
-    "upload": "http://localhost:1337"
+    proxy: {
+      "/api": "http://localhost:1337",
+      "upload": "http://localhost:1337"
+    }
   }
 })
