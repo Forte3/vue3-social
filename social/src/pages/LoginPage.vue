@@ -7,7 +7,8 @@
         <input type="email" placeholder="邮箱" v-model="email" />
         <input v-if="!isLogin" type="text" placeholder="用户名" v-model="username" />
         <input type="password" placeholder="密码" v-model="password" />
-        <button @click="register" type="submit" class="loginButton">{{ isLogin ? "登录":"注册" }}</button>
+        <button @click="isLogin ? login() : register()" type="submit" class="loginButton">{{ isLogin ? "登录":"注册"
+        }}</button>
         <p @click="isLogin = !isLogin" class="info">
           {{isLogin ? "还没有账号？点击注册" : "已有账号？点击登录"}}
         </p>
@@ -34,6 +35,7 @@ const username = ref('');
 const password = ref('');
 const agreementChecked = ref(false);
 
+// 登录
 async function register() {
   if (!agreementChecked.value) {
     alert("请先阅读并同意隐私协议和使用规范");
@@ -43,7 +45,17 @@ async function register() {
     email: email.value,
     username: username.value,
     password: password.value,
-  });
+  })
+  // 跳转首页
+  router.replace("/");
+}
+
+// 注册
+async function login() {
+  await store.dispatch("loginUser", {
+    email: email.value,
+    password: password.value,
+  })
   router.replace("/");
 }
 

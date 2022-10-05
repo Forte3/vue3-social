@@ -16,6 +16,7 @@ export function getUser() {
   return JSON.parse(localStorage.getItem("user")); //JSON.parse converts string to object
 }
 
+// 注册
 export async function register(email, username, password) {
   const result = await request("/api/auth/local/register", {
     method: "POST",
@@ -25,9 +26,23 @@ export async function register(email, username, password) {
       username,
       password,
       name: username
-    },
-  });
+    }
+  })
+  setJwtToken(result.jwt);
+  saveUser(result.user);
+  return result.user;
+}
 
+// 登录
+export async function login(email, password) {
+  const result = await request("/api/auth/local", {
+    method: "POST",
+    auth: false,
+    body: {
+      identifier: email,
+      password,
+    }
+  })
   setJwtToken(result.jwt);
   saveUser(result.user);
   return result.user;

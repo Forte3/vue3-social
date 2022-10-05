@@ -8,7 +8,7 @@ export async function request(
     method,
     headers: {
       "Content-Type": "application/json",
-      ...(auth && { Authorization: `Bearer ${getJwtToken()}` }),
+      ...(auth && { Authorization: `Bearer ${getJwtToken}` }),
       ...headers,
     },
     ...(body && { body: JSON.stringify(body) }),
