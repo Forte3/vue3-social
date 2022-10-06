@@ -10,7 +10,16 @@ export const store = createStore({
     post,
     comment,
   },
-  state() { },
-  mutations: {},
+  state() {
+    return {
+      // 显示上传图片的对话框
+      showPostUpload: false,
+    }
+  },
+  mutations: {
+    changeShowPostUpload(state, show) {
+      state.showPostUpload = show;
+    }
+  },
   actions: {},
 })

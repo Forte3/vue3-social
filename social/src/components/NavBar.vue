@@ -9,7 +9,7 @@
       <router-link to="/">
         <TheIcon icon="home" />
       </router-link>
-      <button>
+      <button @click="publishPost()">
         <TheIcon icon="publish" />
       </button>
       <!-- dropdown -->
@@ -31,6 +31,14 @@
 <script setup>
 import TheIcon from './TheIcon.vue';
 import TheAvatar from './TheAvatar.vue';
+import { useStore } from 'vuex';
+
+const store = useStore();
+
+function publishPost() {
+  store.commit('changeShowPostUpload', true);
+}
+
 
 </script>
 

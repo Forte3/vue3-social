@@ -3,18 +3,19 @@
     <div class="modal">
       <div class="backdrop"></div>
       <div class="modalContent">
-        <button class="closeBtn">
+        <button class="closeBtn" @click="$emit('close')">
           <TheIcon icon="close"></TheIcon>
         </button>
         <slot></slot>
       </div>
     </div>
-
   </Teleport>
 </template>
 
 <script setup>
 import TheIcon from './TheIcon.vue';
+
+defineEmits(['close']);
 
 </script>
 

@@ -1,9 +1,10 @@
 <template>
-  <TheModal>
+  <TheModal @close="store.commit('changeShowPostUpload',false)">
     <div class="postUpload">
       <label class="upload">
-        <TheIcon icon="upload-image" />
-        <input type="file" accept="image/*" class="fileChooser" />
+        <img v-if="imageObjUrl" :src="imageObjUrl" class="perview" />
+        <TheIcon v-else icon="upload-image" />
+        <input type="file" accept="image/*" class="fileChooser" @change="handleImageUpload" />
       </label>
       <div class="postContent">
         <textarea placeholder="写点什么吧" class="postContentInput"></textarea>
@@ -17,6 +18,22 @@
 import TheModal from './TheModal.vue';
 import TheIcon from './TheIcon.vue';
 import TheButton from './TheButton.vue';
+import { useStore } from 'vuex';
+import { ref } from 'vue';
+
+const store = useStore();
+
+const imageObjUrl = ref("");
+
+// 上传图片
+async function handleImageUpload(e) {
+  // 暂时只允许上传一张图片
+  const imageFile = e.target.files[0];
+  if (imageFile) {
+    // 设置预览
+    imageObjUrl.value = URL.createObjectURL(imageFile);
+  }
+}
 
 </script>
 
