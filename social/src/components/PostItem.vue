@@ -1,19 +1,17 @@
 <template>
-  <div>
-    <div class="postItem">
-      <img src="" alt="" width="100%" height="100%" style="background: #eee;" />
-      <div class="postInfo">
-        <div class="postMeta">
-          <TheAvatar />
-          <span>张XX</span>
-          <span class="postPubDate">12小时之前发布</span>
-          <PostActions />
-        </div>
-        <div class="postDesc">
-          <p>
-            这是一棵树。这是一棵树。这是一棵树。这是一棵树。这是一棵树。这是一棵树。这是一棵树。这是一棵树。这是一棵树。这是一棵树。这是一棵树。这是一棵树。#植物#树#树叶#绿色#特别#长的#标签#特别＃多的#标签＃省略#显示。
-          </p>
-        </div>
+  <div class="postItem">
+    <img :src="post.image" width="100%" height="100%" style="background: #eee" />
+    <div class="postInfo">
+      <div class="postMeta">
+        <TheAvatar :src="post?.user?.avatar" />
+        <span>{{ post?.user?.name }}</span>
+        <span class="postPubDate">{{ dateToRelative(post.publishedAt) }}</span>
+        <PostActions />
+      </div>
+      <div class="postDesc">
+        <p>
+          {{post.description}}
+        </p>
       </div>
     </div>
   </div>
@@ -22,6 +20,14 @@
 <script setup>
 import TheAvatar from '../components/TheAvatar.vue';
 import PostActions from '../components/PostActions.vue';
+import { dateToRelative } from '../utils/date';
+
+defineProps({
+  post: {
+    type: Object,
+    default: {},
+  }
+})
 
 </script>
 

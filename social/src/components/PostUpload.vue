@@ -7,8 +7,8 @@
         <input type="file" accept="image/*" class="fileChooser" @change="handleImageUpload" />
       </label>
       <div class="postContent">
-        <textarea placeholder="写点什么吧" class="postContentInput"></textarea>
-        <TheButton class="pubBtn">发布</TheButton>
+        <textarea placeholder="写点什么..." class="postContentInput" v-model="description"></textarea>
+        <TheButton class="pubBtn" @click="publishPost">发布</TheButton>
       </div>
     </div>
   </TheModal>
@@ -24,6 +24,8 @@ import { ref } from 'vue';
 const store = useStore();
 
 const imageObjUrl = ref("");
+const image = ref(null);
+const description = ref("");
 
 // 上传图片
 async function handleImageUpload(e) {
@@ -32,7 +34,16 @@ async function handleImageUpload(e) {
   if (imageFile) {
     // 设置预览
     imageObjUrl.value = URL.createObjectURL(imageFile);
+    // 设置图片
+    image.value = imageFile;
   }
+}
+
+function publishPost() {
+  store.dispatch('uploadPost', {
+    image: image.value,
+    description: description.value
+  })
 }
 
 </script>
